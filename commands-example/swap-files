@@ -1,0 +1,3 @@
+swap files using ln, rm
+
+ln text1.txt text2_1.txt && rm text1.txt && ln text2.txt text1_2.txt && tm text2.txt
