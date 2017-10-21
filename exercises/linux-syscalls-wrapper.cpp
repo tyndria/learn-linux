@@ -16,12 +16,12 @@ using namespace std;
   
     while( token != NULL ) {
         argv[i] = token;
-        cout << "token" << argv[i] << endl;
         i++;
         token = strtok(NULL, " ");
     }
-   argv[i] = NULL;
-   return *argv;
+    argv[i] = NULL;
+    
+    return *argv;
 }
 
 int main(int argc, char* arg_v[], char* env_p[])
@@ -35,7 +35,18 @@ int main(int argc, char* arg_v[], char* env_p[])
         getline (cin, command);
         command_char = strcpy((char*)malloc(command.length()+1), command.c_str());
         char *argv[64] = {};
-        *argv = getTokens(command_char);
+        int i = 0;
+        
+        char* token = strtok(command_char, " ");
+      
+        while( token != NULL ) {
+            argv[i] = token;
+            i++;
+            token = strtok(NULL, " ");
+        }
+        argv[i] = NULL;
+         
+    
         if (strcmp(argv[0], "exit") == 0) {
             break;
         }
