@@ -1,0 +1,4 @@
+compile:
+  g ++ -o Args args.cpp
+run:
+  ./Args 123 456
