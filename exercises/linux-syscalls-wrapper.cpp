@@ -16,6 +16,7 @@ using namespace std;
   
     while( token != NULL ) {
         argv[i] = token;
+        cout << "token" << argv[i] << endl;
         i++;
         token = strtok(NULL, " ");
     }
@@ -28,11 +29,13 @@ int main(int argc, char* arg_v[], char* env_p[])
     int* status;
     pid_t my_pid;
     while (true) {
-        char command[100] = {};
+        string command;
+        char* command_char;
         cout << "Please enter a syscall \n";
-        cin >> command;
+        getline (cin, command);
+        command_char = strcpy((char*)malloc(command.length()+1), command.c_str());
         char *argv[64] = {};
-        *argv = getTokens(command);
+        *argv = getTokens(command_char);
         if (strcmp(argv[0], "exit") == 0) {
             break;
         }
@@ -52,4 +55,3 @@ int main(int argc, char* arg_v[], char* env_p[])
     }
     return 0;
 }
-
